@@ -224,15 +224,15 @@ fi
 base=$(readlink -f $base)
 
 if [ ${prefix} == VFS ]; then
-    snapname=$(TZ=GMT date +@GMT-%Y.%m.%d-%H.%M.%S)
-    snappattern="@GMT-????.??.??-??.??.??"
+    snapname=$(TZ=GMT date +@GMT-%Y.%m.%d-%H.%M)
+    snappattern="@GMT-????.??.??-??.??"
 else
     if $use_as_prefix; then
-        snapname=${prefix}_$(date +%Y-%m-%d_%H${time_delim}%M${time_delim}%S)
-        snappattern="${prefix}_????-??-??_??${time_delim}??${time_delim}??"
+        snapname=${prefix}_$(date +%Y-%m-%d_%H${time_delim}%M)
+        snappattern="${prefix}_????-??-??_??${time_delim}??"
     else
-        snapname=$(date +%Y-%m-%d_%H${time_delim}%M${time_delim}%S)_${prefix}
-        snappattern="????-??-??_??${time_delim}??${time_delim}??_${prefix}"
+        snapname=$(date +%Y-%m-%d_%H${time_delim}%M)_${prefix}
+        snappattern="????-??-??_??${time_delim}??_${prefix}"
     fi
 fi
 if [ -e ${base}/${snapname} ]; then
